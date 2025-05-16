@@ -1,0 +1,71 @@
+:host {
+    .titulo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .formulario {
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 500px;
+
+        .opcoes-formulario {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            >div {
+                width: 100%;
+                flex: 1 1 20px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            @media (max-width: 600px) {
+                flex-direction: column;
+
+                >div {
+                    width: 100%;
+                }
+            }
+        }
+
+        .btn-filtro-final {
+            display: flex;
+            justify-content: end;
+
+        }
+    }
+
+    .tabela {
+        width: 100%;
+
+        >table {
+            width: 100%;
+            border-collapse: collapse;
+
+            >thead>tr>td {
+                border-bottom: 1px solid black;
+
+            }
+
+            td {
+                padding: 5px;
+            }
+        }
+    }
+
+    .listagem {
+        display: flex;
+        flex-direction: column;
+        gap: 20px
+    }
+
+    .botoes>button {
+        margin: 5px;
+    }
+}

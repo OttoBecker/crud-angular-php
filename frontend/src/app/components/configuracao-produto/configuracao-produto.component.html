@@ -1,0 +1,41 @@
+<div class="titulo">
+    <h1>Gerenciamento de produto</h1>
+</div>
+<form [formGroup]="formulario"
+      class="formulario">
+    <div class="opcoes-formulario">
+        <div>
+            <label>Nome:</label>
+            <input type="text"
+                   [formControlName]="'nome'">
+        </div>
+        <div>
+            <label>Quantidade:</label>
+            <input type="number"
+                   [formControlName]="'quantidade'">
+        </div>
+        <div>
+            <label>Categoria:</label>
+            <select [formControlName]="'categoriaId'">
+                <option [value]="null"
+                        disabled
+                        hidden>Selecione uma categoria</option>
+                <option *ngFor="let categoria of categorias"
+                        [ngValue]="categoria.id"
+                        [label]="categoria.nome"></option>
+            </select>
+        </div>
+    </div>
+    <div class="botoes btn-filtro-final">
+        <button class="gray"
+                (click)="voltar()">Voltar</button>
+        <button *ngIf="id"
+                (click)="novoCadastro()">Novo</button>
+        <button [disabled]="formulario.invalid"
+                class="success"
+                (click)="cadastrarOuAtualizar()">{{id ? 'Atualizar' : 'Adicionar'}}</button>
+        <button *ngIf="id"
+                class="danger"
+                (click)="excluir()">Excluir</button>
+    </div>
+</form>

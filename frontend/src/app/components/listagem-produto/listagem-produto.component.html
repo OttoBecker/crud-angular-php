@@ -1,0 +1,75 @@
+<div class="listagem">
+    <div class="titulo">
+        <h1>Controle de produto</h1>
+    </div>
+    <div>
+        <fieldset>
+            <legend>Filtro</legend>
+            <form [formGroup]="filtro"
+                  class="filtro">
+                <div class="opcoes-filtro">
+                    <div>
+                        <label>Nome:</label>
+                        <input type="text"
+                               [formControlName]="'nome'">
+                    </div>
+                    <div>
+                        <label>Quantidade inicial:</label>
+                        <input type="number"
+                               [formControlName]="'quantidadeInicial'">
+                    </div>
+                    <div>
+                        <label>Quantidade final:</label>
+                        <input type="number"
+                               [formControlName]="'quantidadeFinal'">
+                    </div>
+                    <div>
+                        <label>Categoria:</label>
+                        <select [formControlName]="'categoriaId'">
+                            <option [value]="null"
+                                    disabled
+                                    hidden>Selecione uma categoria</option>
+                            <option *ngFor="let categoria of categorias"
+                                    [ngValue]="categoria.id"
+                                    [label]="categoria.nome"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="botoes btn-filtro">
+                    <button class="success"
+                            [routerLink]="['/configuracao-produto']">Adicionar</button>
+                    <button [disabled]="
+                            filtro.invalid"
+                            (click)="filtrar()">Filtrar</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+
+    <div class="tabela">
+        <table>
+            <thead>
+                <tr>
+                    <td style="width: 30%;">Nome</td>
+                    <td style="width: 15%;">Quantidade</td>
+                    <td style="width: 30%;">Categoria</td>
+                    <td style="width: 25%;">Ações</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let produto of produtos">
+                    <td style="width: 30%;">{{produto.nome}}</td>
+                    <td style="width: 15%;">{{produto.quantidade}}</td>
+                    <td style="width: 30%;">{{produto.categoriaNome}}</td>
+                    <td class="botoes"
+                        style="width: 25%;">
+                        <button class="alert"
+                                [routerLink]="['/configuracao-produto', produto.id]">Editar</button>
+                        <button class="danger"
+                                (click)="excluir(produto.id)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
