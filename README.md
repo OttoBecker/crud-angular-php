@@ -2,6 +2,8 @@
 
 Projeto feito em Angular (TS) e Yii2 (PHP)
 
+Vídeo demonstrando o funcionamento do projeto: https://youtu.be/pF-ByBCB5Sk
+
 Passo a passo de como rodar o projeto:
 
 Frontend:
